@@ -176,108 +176,119 @@ export const ActionButtons = () => {
   };
 
   const renderSecondaryDialog = () => {
+    if (!actionDialog.open) return null;
+    
     const opponentPlayers = getOpponentPlayers();
     const sameTeamPlayers = selectedPlayer.team === 'home' ? homeTeam.players : awayTeam.players;
 
     switch (actionDialog.type) {
       case 'assist-question':
         return (
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>¿Hubo asistencia?</DialogTitle>
-              <DialogDescription>
-                ¿Algún compañero asistió en esta canasta?
-              </DialogDescription>
-            </DialogHeader>
-            <div className="flex gap-3 justify-end">
-              <Button variant="outline" onClick={() => handleAssistQuestion(false)}>
-                No
-              </Button>
-              <Button onClick={() => handleAssistQuestion(true)}>
-                Sí
-              </Button>
-            </div>
-          </DialogContent>
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>¿Hubo asistencia?</DialogTitle>
+                <DialogDescription>
+                  ¿Algún compañero asistió en esta canasta?
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex gap-3 justify-end">
+                <Button variant="outline" onClick={() => handleAssistQuestion(false)}>
+                  No
+                </Button>
+                <Button onClick={() => handleAssistQuestion(true)}>
+                  Sí
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
         );
 
       case 'assist-player':
         return (
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Seleccionar jugador que asistió</DialogTitle>
-              <DialogDescription>
-                ¿Quién dio la asistencia?
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-2 max-h-[300px] overflow-y-auto">
-              {sameTeamPlayers.map((player, index) => {
-                if (index === selectedPlayer.index) return null;
-                return (
-                  <Button
-                    key={index}
-                    variant="outline"
-                    className="w-full justify-start"
-                    onClick={() => handleAssistPlayer(index)}
-                  >
-                    #{player.number} {player.name}
-                  </Button>
-                );
-              })}
-            </div>
-          </DialogContent>
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Seleccionar jugador que asistió</DialogTitle>
+                <DialogDescription>
+                  ¿Quién dio la asistencia?
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-2 max-h-[300px] overflow-y-auto">
+                {sameTeamPlayers.map((player, index) => {
+                  if (index === selectedPlayer.index) return null;
+                  return (
+                    <Button
+                      key={index}
+                      variant="outline"
+                      className="w-full justify-start"
+                      onClick={() => handleAssistPlayer(index)}
+                    >
+                      #{player.number} {player.name}
+                    </Button>
+                  );
+                })}
+              </div>
+            </DialogContent>
+          </Dialog>
         );
 
       case 'foul-received':
         return (
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Falta recibida por</DialogTitle>
-              <DialogDescription>
-                ¿Qué jugador del equipo contrario recibió la falta?
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-2 max-h-[300px] overflow-y-auto">
-              {opponentPlayers.map((player, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  className="w-full justify-start"
-                  onClick={() => handleFoulReceived(index)}
-                >
-                  #{player.number} {player.name}
-                </Button>
-              ))}
-            </div>
-          </DialogContent>
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Falta recibida por</DialogTitle>
+                <DialogDescription>
+                  ¿Qué jugador del equipo contrario recibió la falta?
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-2 max-h-[300px] overflow-y-auto">
+                {opponentPlayers.map((player, index) => (
+                  <Button
+                    key={index}
+                    variant="outline"
+                    className="w-full justify-start"
+                    onClick={() => handleFoulReceived(index)}
+                  >
+                    #{player.number} {player.name}
+                  </Button>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
         );
 
       case 'steal-turnover':
         return (
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Pérdida cometida por</DialogTitle>
-              <DialogDescription>
-                ¿Qué jugador del equipo contrario cometió la pérdida?
-              </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-2 max-h-[300px] overflow-y-auto">
-              {opponentPlayers.map((player, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  className="w-full justify-start"
-                  onClick={() => handleStealTurnover(index)}
-                >
-                  #{player.number} {player.name}
-                </Button>
-              ))}
-            </div>
-          </DialogContent>
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Pérdida cometida por</DialogTitle>
+                <DialogDescription>
+                  ¿Qué jugador del equipo contrario cometió la pérdida?
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-2 max-h-[300px] overflow-y-auto">
+                {opponentPlayers.map((player, index) => (
+                  <Button
+                    key={index}
+                    variant="outline"
+                    className="w-full justify-start"
+                    onClick={() => handleStealTurnover(index)}
+                  >
+                    #{player.number} {player.name}
+                  </Button>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
         );
 
       case 'turnover-steal':
         return (
-          <DialogContent>
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
             <DialogHeader>
               <DialogTitle>¿Hubo robo?</DialogTitle>
               <DialogDescription>
