@@ -488,8 +488,24 @@ export const ActionButtons = () => {
         );
 
       case "rebound-player":
-        const reboundTeam =
-          reboundType === "offensive" ? selectedPlayer.team : getOpponentTeam();
+        let reboundTeam;
+        if (secondaryAction?.type === "block-rebound") {
+          // In block scenario, selectedPlayer is the blocker
+          // Offensive rebound: The shooting team (opponent of blocker) gets it
+          // Defensive rebound: The blocking team (selectedPlayer) gets it
+          reboundTeam =
+            reboundType === "offensive"
+              ? getOpponentTeam()
+              : selectedPlayer.team;
+        } else {
+          // Standard missed shot scenario, selectedPlayer is the shooter
+          // Offensive rebound: The shooting team (selectedPlayer) gets it
+          // Defensive rebound: The defending team (opponent) gets it
+          reboundTeam =
+            reboundType === "offensive"
+              ? selectedPlayer.team
+              : getOpponentTeam();
+        }
         const reboundTeamData = reboundTeam === "home" ? homeTeam : awayTeam;
         const reboundPlayers = reboundTeamData.players;
 
