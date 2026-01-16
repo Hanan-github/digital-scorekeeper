@@ -37,20 +37,23 @@ export const PlayByPlay = () => {
             </div>
           ) : (
             <div className="space-y-2 pb-4">
-              {playByPlay.map((play) => (
-                <div 
-                  key={play.id}
-                  className="border-l-2 pl-3 py-2 hover:bg-muted/50 transition-colors rounded-r"
-                  style={{ borderColor: play.team === 'home' ? '#0074ff' : '#ff4757' }}
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-medium text-muted-foreground">
-                      {getQuarterLabel(play.quarter)} - {formatTime(play.time)}
-                    </span>
+              {playByPlay.map((play) => {
+                const teamColor = play.team === 'home' ? homeTeam.color : awayTeam.color;
+                return (
+                  <div 
+                    key={play.id}
+                    className="border-l-2 pl-3 py-2 hover:bg-muted/50 transition-colors rounded-r"
+                    style={{ borderColor: teamColor }}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-medium text-muted-foreground">
+                        {getQuarterLabel(play.quarter)} - {formatTime(play.time)}
+                      </span>
+                    </div>
+                    <div className="text-sm">{play.text}</div>
                   </div>
-                  <div className="text-sm">{play.text}</div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </ScrollArea>
