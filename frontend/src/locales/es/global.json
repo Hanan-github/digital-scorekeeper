@@ -17,21 +17,21 @@
     "back": "Volver"
   },
   "app": {
-    "title": "CourtSide Stats | Estadísticas de Baloncesto",
+    "title": "Estadísticas de Baloncesto",
     "subtitle": "Configura los equipos para comenzar el partido"
   },
   "game_setup": {
     "configuration_title": "Configuración del Partido",
     "configuration_desc": "Información del partido",
     "city_label": "Ciudad",
-    "city_placeholder": "Ej: Madrid",
+    "city_placeholder": "Ej: Bilbao",
     "category_label": "Categoría/Competición",
-    "category_placeholder": "Ej: Senior, Junior, Cadete...",
+    "category_placeholder": "Ej: Senior, Junior, Torneo Internacional de Isla Cristina...",
     "quarter_duration_label": "Duración de cuartos (minutos):",
     "home_team_tab": "Equipo Local",
     "away_team_tab": "Equipo Visitante",
     "team_name_label": "Nombre del Equipo",
-    "home_team_placeholder": "Ej: Lakers",
+    "home_team_placeholder": "Ej: LA Lakers",
     "away_team_placeholder": "Ej: Celtics",
     "team_color_label": "Color del Equipo",
     "players_label": "Jugadores (12)",

@@ -4,6 +4,8 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import global_es from "./locales/es/global.json";
 import global_en from "./locales/en/global.json";
+import global_fr from "./locales/fr/global.json";
+import global_pt from "./locales/pt/global.json";
 
 i18n
   .use(LanguageDetector)
@@ -15,6 +17,12 @@ i18n
       },
       en: {
         global: global_en,
+      },
+      fr: {
+        global: global_fr,
+      },
+      pt: {
+        global: global_pt,
       },
     },
     fallbackLng: "es",
