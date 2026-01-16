@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGameStore } from '../store/gameStore';
-import { Trophy } from 'lucide-react';
+import { GameTimer } from './GameTimer';
 
 export const Scoreboard = () => {
   const { homeTeam, awayTeam, homeScore, awayScore } = useGameStore();
@@ -27,10 +27,9 @@ export const Scoreboard = () => {
         </div>
       </div>
 
-      {/* VS Separator */}
-      <div className="flex flex-col items-center justify-center">
-        <Trophy className="w-8 h-8 text-muted-foreground mb-2" />
-        <span className="text-sm font-medium text-muted-foreground">VS</span>
+      {/* Timer in Center */}
+      <div className="flex items-center justify-center">
+        <GameTimer />
       </div>
 
       {/* Away Team */}
