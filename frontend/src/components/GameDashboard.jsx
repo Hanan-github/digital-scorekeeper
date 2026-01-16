@@ -111,14 +111,9 @@ export const GameDashboard = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
-        {/* Scoreboard and Timer */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-          <div className="lg:col-span-2">
-            <Scoreboard />
-          </div>
-          <div className="flex justify-center lg:justify-end">
-            <GameTimer />
-          </div>
+        {/* Scoreboard with Timer in Center */}
+        <div className="flex justify-center">
+          <Scoreboard />
         </div>
 
         {/* Players and Play by Play */}
