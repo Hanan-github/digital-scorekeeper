@@ -34,6 +34,7 @@ export const exportGameToPDF = (gameData, includePlayByPlay = false) => {
       stats.assists +
       stats.steals +
       stats.blocks -
+      stats.blocksReceived -
       (stats.fg2Attempted - stats.fg2Made) -
       (stats.fg3Attempted - stats.fg3Made) -
       (stats.ftAttempted - stats.ftMade) -
