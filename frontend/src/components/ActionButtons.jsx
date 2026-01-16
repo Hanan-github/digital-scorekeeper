@@ -157,7 +157,7 @@ export const ActionButtons = () => {
 
   const handleFoulReceived = (playerIndex) => {
     addFoulReceived(getOpponentTeam(), playerIndex);
-    toast.success('Falta registrada');
+    toast.success('Falta registrada', { duration: 1500 });
     clearSelection();
     setActionDialog({ open: false, type: null });
   };
@@ -169,7 +169,7 @@ export const ActionButtons = () => {
 
   const handleConfirmRebound = () => {
     addRebound(selectedPlayer.team, selectedPlayer.index, reboundType);
-    toast.success('Rebote registrado');
+    toast.success('Rebote registrado', { duration: 1500 });
     clearSelection();
     setActionDialog({ open: false, type: null });
   };
@@ -181,7 +181,7 @@ export const ActionButtons = () => {
 
   const handleStealTurnover = (playerIndex) => {
     addTurnover(getOpponentTeam(), playerIndex);
-    toast.success('Robo registrado');
+    toast.success('Robo registrado', { duration: 1500 });
     clearSelection();
     setActionDialog({ open: false, type: null });
   };
@@ -194,9 +194,9 @@ export const ActionButtons = () => {
   const handleTurnoverSteal = (hasSteal, playerIndex) => {
     if (hasSteal && playerIndex !== null) {
       addSteal(getOpponentTeam(), playerIndex);
-      toast.success('Pérdida con robo registrada');
+      toast.success('Pérdida con robo registrada', { duration: 1500 });
     } else {
-      toast.success('Pérdida registrada');
+      toast.success('Pérdida registrada', { duration: 1500 });
     }
     clearSelection();
     setActionDialog({ open: false, type: null });
@@ -209,7 +209,7 @@ export const ActionButtons = () => {
 
   const handleBlockReceived = (playerIndex) => {
     addBlockReceived(getOpponentTeam(), playerIndex);
-    toast.success('Tapón registrado');
+    toast.success('Tapón registrado', { duration: 1500 });
     clearSelection();
     setActionDialog({ open: false, type: null });
   };
