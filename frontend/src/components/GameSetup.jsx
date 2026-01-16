@@ -88,9 +88,10 @@ export const GameSetup = () => {
     });
     
     setQuarterDuration(quarterDuration);
+    setGameInfo({ city, category });
     completeConfiguration();
     
-    toast.success('¡Configuración completada! El partido está listo.');
+    toast.success('¡Configuración completada! El partido está listo.', { duration: 1500 });
   };
 
   return (
