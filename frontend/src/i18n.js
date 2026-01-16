@@ -18,6 +18,8 @@ i18n
       },
     },
     fallbackLng: "es",
+    ns: ["global"],
+    defaultNS: "global",
     interpolation: {
       escapeValue: false,
     },
