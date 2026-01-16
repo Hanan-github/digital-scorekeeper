@@ -75,12 +75,14 @@ export const ActionButtons = () => {
         return;
       }
       
-      toast.success(`¡${points} puntos anotados!`);
+      toast.success(`¡${points} puntos anotados!`, { duration: 1500 });
       clearSelection();
     } else {
       addMissedShot(selectedPlayer.team, selectedPlayer.index, shotType);
-      toast.info('Tiro fallado registrado');
-      clearSelection();
+      // Ask about rebound after missed shot
+      setSecondaryAction({ type: 'missed-shot-rebound', shotType });
+      setActionDialog({ open: true, type: 'rebound-question' });
+      return;
     }
     setActionDialog({ open: false, type: null });
   };
