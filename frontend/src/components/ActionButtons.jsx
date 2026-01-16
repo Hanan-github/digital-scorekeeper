@@ -63,6 +63,21 @@ export const ActionButtons = () => {
     return teamData.players;
   };
 
+  const getActiveOpponentPlayers = () => {
+    const opponentTeam = getOpponentTeam();
+    const teamData = opponentTeam === 'home' ? homeTeam : awayTeam;
+    const activePlayers = opponentTeam === 'home' ? homeActivePlayers : awayActivePlayers;
+    return activePlayers.map(index => ({ ...teamData.players[index], originalIndex: index }));
+  };
+
+  const getActiveSameTeamPlayers = () => {
+    const teamData = selectedPlayer.team === 'home' ? homeTeam : awayTeam;
+    const activePlayers = selectedPlayer.team === 'home' ? homeActivePlayers : awayActivePlayers;
+    return activePlayers
+      .filter(index => index !== selectedPlayer.index)
+      .map(index => ({ ...teamData.players[index], originalIndex: index }));
+  };
+
   const handlePointsClick = () => {
     setActionDialog({ open: true, type: 'points' });
     setShotType('2pt');
