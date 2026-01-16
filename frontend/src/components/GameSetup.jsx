@@ -9,7 +9,7 @@ import { Users, Clock, Palette, Play } from 'lucide-react';
 import { toast } from 'sonner';
 
 export const GameSetup = () => {
-  const { setTeamConfig, setQuarterDuration, completeConfiguration } = useGameStore();
+  const { setTeamConfig, setQuarterDuration, setGameInfo, completeConfiguration } = useGameStore();
   
   const [homeTeamName, setHomeTeamName] = useState('');
   const [homeTeamColor, setHomeTeamColor] = useState('#0074ff');
@@ -22,6 +22,8 @@ export const GameSetup = () => {
   const [awayPlayerNumbers, setAwayPlayerNumbers] = useState(Array(12).fill('').map((_, i) => i + 1));
   
   const [quarterDuration, setQuarterDurationLocal] = useState(10);
+  const [city, setCity] = useState('');
+  const [category, setCategory] = useState('');
 
   const handleHomePlayerChange = (index, value) => {
     const newPlayers = [...homePlayers];
