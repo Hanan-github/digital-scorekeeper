@@ -97,7 +97,7 @@ export const GameSetup = () => {
         {/* Header */}
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold font-digital tracking-wide">
-            Digital Scorekeeper
+            CourtSide Stats
           </h1>
           <p className="text-muted-foreground">
             Configura los equipos para comenzar el partido
