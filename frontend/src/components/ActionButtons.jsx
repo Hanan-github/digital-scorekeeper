@@ -468,6 +468,7 @@ export const ActionButtons = () => {
           </div>
         </DialogContent>
       </Dialog>
+      )}
 
       {/* Foul Dialog */}
       {actionDialog.open && actionDialog.type === 'foul' && (
