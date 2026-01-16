@@ -416,11 +416,12 @@ export const ActionButtons = () => {
       </div>
 
       {/* Points Dialog */}
-      <Dialog 
-        open={actionDialog.open && actionDialog.type === 'points'} 
-        onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}
-      >
-        <DialogContent>
+      {actionDialog.open && actionDialog.type === 'points' && (
+        <Dialog 
+          open={true} 
+          onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}
+        >
+          <DialogContent>
           <DialogHeader>
             <DialogTitle>Registrar Puntos</DialogTitle>
             <DialogDescription>
