@@ -162,25 +162,22 @@ export const ActionButtons = () => {
     addFoulReceived(getOpponentTeam(), playerIndex);
     // Store the player who received the foul
     setFreeThrowPlayer({ team: getOpponentTeam(), index: playerIndex });
-    // Ask if it was a shooting foul
-    setActionDialog({ open: true, type: 'shooting-foul-question' });
+    // Ask directly about free throws (skip "shooting foul" question)
+    setActionDialog({ open: true, type: 'free-throw-count' });
   };
 
-  const handleShootingFoulQuestion = (isShootingFoul) => {
-    if (isShootingFoul) {
-      setActionDialog({ open: true, type: 'free-throw-count' });
-    } else {
+  const handleFreeThrowCount = (count) => {
+    if (count === 0) {
+      // No free throws
       toast.success('Falta registrada', { duration: 1500 });
       clearSelection();
       setActionDialog({ open: false, type: null });
       setFreeThrowPlayer(null);
+    } else {
+      setFreeThrowCount(count);
+      setCurrentFreeThrow(1);
+      setActionDialog({ open: true, type: 'free-throw-attempt' });
     }
-  };
-
-  const handleFreeThrowCount = (count) => {
-    setFreeThrowCount(count);
-    setCurrentFreeThrow(1);
-    setActionDialog({ open: true, type: 'free-throw-attempt' });
   };
 
   const handleFreeThrowAttempt = (made) => {
