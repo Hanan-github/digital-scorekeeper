@@ -147,9 +147,9 @@ export const GameDashboard = () => {
       <Dialog open={showExportDialog} onOpenChange={setShowExportDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Exportar a PDF</DialogTitle>
+            <DialogTitle>Exportar Box Score Completo a PDF</DialogTitle>
             <DialogDescription>
-              Configura las opciones de exportación
+              Se exportarán todas las estadísticas detalladas del partido
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
@@ -169,7 +169,7 @@ export const GameDashboard = () => {
               Cancelar
             </Button>
             <Button onClick={confirmExport}>
-              Exportar
+              Exportar PDF
             </Button>
           </div>
         </DialogContent>
