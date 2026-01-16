@@ -549,6 +549,28 @@ export const ActionButtons = () => {
           </Dialog>
         );
 
+      case 'block-shot-type':
+        return (
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Tipo de tiro taponado</DialogTitle>
+                <DialogDescription>
+                  ¿El tiro taponado fue de 2 o 3 puntos?
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex gap-3 justify-center">
+                <Button onClick={() => handleBlockShotType('2pt')}>
+                  2 Puntos
+                </Button>
+                <Button onClick={() => handleBlockShotType('3pt')}>
+                  3 Puntos
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        );
+
       case 'block-received':
         return (
           <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
