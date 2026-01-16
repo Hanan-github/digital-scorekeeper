@@ -89,7 +89,7 @@ export const GameDashboard = () => {
                 variant="ghost"
                 size="icon"
                 onClick={handleExport}
-                title="Exportar PDF"
+                title="Exportar Box Score a PDF"
               >
                 <Download className="h-5 w-5" />
               </Button>
