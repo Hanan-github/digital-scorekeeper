@@ -8,7 +8,7 @@ export const exportGameToPDF = (gameData, includePlayByPlay = false) => {
   // Title
   pdf.setFontSize(20);
   pdf.setFont(undefined, 'bold');
-  pdf.text('Box Score - Partido de Baloncesto', pageWidth / 2, 20, { align: 'center' });
+  pdf.text('Box Score', pageWidth / 2, 20, { align: 'center' });
   
   // Game Info
   pdf.setFontSize(12);
@@ -18,11 +18,7 @@ export const exportGameToPDF = (gameData, includePlayByPlay = false) => {
   pdf.setFont(undefined, 'bold');
   pdf.text(`${gameData.homeScore} - ${gameData.awayScore}`, pageWidth / 2, 40, { align: 'center' });
   
-  pdf.setFontSize(10);
-  pdf.setFont(undefined, 'normal');
-  pdf.text(`Cuarto: ${gameData.currentQuarter} | Duración: ${gameData.quarterDuration} min`, pageWidth / 2, 48, { align: 'center' });
-  
-  let yPos = 58;
+  let yPos = 50;
   
   // Helper function to calculate percentages
   const calcPct = (made, attempted) => {
