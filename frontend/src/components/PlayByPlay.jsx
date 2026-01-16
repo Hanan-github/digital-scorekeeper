@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { List } from 'lucide-react';
 
 export const PlayByPlay = () => {
-  const { playByPlay, currentQuarter } = useGameStore();
+  const { playByPlay, currentQuarter, homeTeam, awayTeam } = useGameStore();
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
