@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useGameStore } from "../store/gameStore";
 import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
-import { Play, Pause, RotateCcw, SkipForward } from "lucide-react";
+import { Play, Pause, RotateCcw, SkipForward, SkipBack } from "lucide-react";
 import { toast } from "sonner";
 
 export const GameTimer = () => {
@@ -17,6 +17,7 @@ export const GameTimer = () => {
     resetTimer,
     updateTime,
     nextQuarter,
+    previousQuarter,
   } = useGameStore();
 
   const intervalRef = useRef(null);
@@ -56,6 +57,17 @@ export const GameTimer = () => {
     );
   };
 
+  const handlePreviousQuarter = () => {
+    if (currentQuarter > 1) {
+      pauseTimer();
+      previousQuarter();
+      toast.success(
+        t("toasts.quarter_started", { quarter: currentQuarter - 1 }),
+        { duration: 1500 }
+      );
+    }
+  };
+
   const getQuarterLabel = () => {
     if (currentQuarter <= 4) {
       return t("game_timer.quarter", { quarter: currentQuarter });
@@ -85,8 +97,24 @@ export const GameTimer = () => {
         <Button
           variant="outline"
           size="icon"
+          onClick={handlePreviousQuarter}
+          disabled={currentQuarter <= 1}
+          className="h-10 w-10"
+          title={t("game_timer.previous_quarter")}
+        >
+          <SkipBack className="h-5 w-5" />
+        </Button>
+
+        <Button
+          variant="outline"
+          size="icon"
           onClick={isTimerRunning ? pauseTimer : startTimer}
           className="h-10 w-10"
+          title={
+            isTimerRunning
+              ? t("game_timer.stop_timer")
+              : t("game_timer.start_timer")
+          }
         >
           {isTimerRunning ? (
             <Pause className="h-5 w-5" />
@@ -100,6 +128,7 @@ export const GameTimer = () => {
           size="icon"
           onClick={resetTimer}
           className="h-10 w-10"
+          title={t("game_timer.reset_timer")}
         >
           <RotateCcw className="h-5 w-5" />
         </Button>
@@ -109,6 +138,7 @@ export const GameTimer = () => {
           size="icon"
           onClick={handleNextQuarter}
           className="h-10 w-10"
+          title={t("game_timer.next_quarter")}
         >
           <SkipForward className="h-5 w-5" />
         </Button>

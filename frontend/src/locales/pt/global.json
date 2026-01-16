@@ -169,6 +169,11 @@
   },
   "game_timer": {
     "quarter": "{{quarter}}º Quarto",
-    "overtime": "Prorrogação"
+    "overtime": "Prorrogação",
+    "start_timer": "Iniciar cronômetro",
+    "stop_timer": "Parar cronômetro",
+    "reset_timer": "Reiniciar cronômetro",
+    "next_quarter": "Próximo quarto",
+    "previous_quarter": "Quarto anterior"
   }
 }

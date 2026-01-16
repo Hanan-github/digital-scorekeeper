@@ -169,6 +169,11 @@
   },
   "game_timer": {
     "quarter": "Q{{quarter}}",
-    "overtime": "OT"
+    "overtime": "OT",
+    "start_timer": "Start timer",
+    "stop_timer": "Stop timer",
+    "reset_timer": "Reset timer",
+    "next_quarter": "Next quarter",
+    "previous_quarter": "Previous quarter"
   }
 }
