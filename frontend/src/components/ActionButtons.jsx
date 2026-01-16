@@ -102,7 +102,36 @@ export const ActionButtons = () => {
   const handleAssistPlayer = (playerIndex) => {
     addAssist(selectedPlayer.team, playerIndex);
     const points = secondaryAction.shotType === '3pt' ? 3 : 2;
-    toast.success(`¡${points} puntos con asistencia!`);
+    toast.success(`¡${points} puntos con asistencia!`, { duration: 1500 });
+    clearSelection();
+    setActionDialog({ open: false, type: null });
+    setSecondaryAction(null);
+  };
+
+  const handleReboundQuestion = (hasRebound) => {
+    if (hasRebound) {
+      setActionDialog({ open: true, type: 'rebound-type' });
+    } else {
+      toast.info('Tiro fallado registrado', { duration: 1500 });
+      clearSelection();
+      setActionDialog({ open: false, type: null });
+      setSecondaryAction(null);
+    }
+  };
+
+  const handleReboundType = (type) => {
+    setReboundType(type);
+    setActionDialog({ open: true, type: 'rebound-player' });
+  };
+
+  const handleReboundPlayer = (team, playerIndex) => {
+    if (team && playerIndex !== null) {
+      addRebound(team, playerIndex, reboundType);
+      toast.success(`Rebote ${reboundType === 'offensive' ? 'ofensivo' : 'defensivo'} registrado`, { duration: 1500 });
+    } else {
+      // Team rebound
+      toast.success(`Rebote de equipo registrado`, { duration: 1500 });
+    }
     clearSelection();
     setActionDialog({ open: false, type: null });
     setSecondaryAction(null);
@@ -115,7 +144,15 @@ export const ActionButtons = () => {
 
   const handleConfirmFoul = () => {
     addFoul(selectedPlayer.team, selectedPlayer.index, foulType);
-    setActionDialog({ open: true, type: 'foul-received' });
+    
+    // Only ask for foul received on personal and unsportsmanlike fouls
+    if (foulType === 'personal' || foulType === 'unsportsmanlike') {
+      setActionDialog({ open: true, type: 'foul-received' });
+    } else {
+      toast.success('Falta registrada', { duration: 1500 });
+      clearSelection();
+      setActionDialog({ open: false, type: null });
+    }
   };
 
   const handleFoulReceived = (playerIndex) => {
