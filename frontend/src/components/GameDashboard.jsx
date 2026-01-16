@@ -38,7 +38,7 @@ export const GameDashboard = () => {
   const confirmExport = () => {
     const gameData = getGameData();
     exportGameToPDF(gameData, includePlayByPlay);
-    toast.success('PDF exportado correctamente');
+    toast.success('Box Score exportado correctamente', { duration: 1500 });
     setShowExportDialog(false);
     setIncludePlayByPlay(false);
   };
