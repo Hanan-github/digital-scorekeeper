@@ -166,6 +166,54 @@ export const ActionButtons = () => {
     setActionDialog({ open: true, type: 'shooting-foul-question' });
   };
 
+  const handleShootingFoulQuestion = (isShootingFoul) => {
+    if (isShootingFoul) {
+      setActionDialog({ open: true, type: 'free-throw-count' });
+    } else {
+      toast.success('Falta registrada', { duration: 1500 });
+      clearSelection();
+      setActionDialog({ open: false, type: null });
+      setFreeThrowPlayer(null);
+    }
+  };
+
+  const handleFreeThrowCount = (count) => {
+    setFreeThrowCount(count);
+    setCurrentFreeThrow(1);
+    setActionDialog({ open: true, type: 'free-throw-attempt' });
+  };
+
+  const handleFreeThrowAttempt = (made) => {
+    const { team, index } = freeThrowPlayer;
+    
+    if (made) {
+      // Add the free throw point
+      addPoints(team, index, 1, '1pt');
+    } else {
+      // Missed free throw
+      addMissedShot(team, index, '1pt');
+    }
+    
+    // Check if this is the last free throw
+    if (currentFreeThrow < freeThrowCount) {
+      // More free throws to go
+      setCurrentFreeThrow(currentFreeThrow + 1);
+      setActionDialog({ open: true, type: 'free-throw-attempt' });
+    } else {
+      // Last free throw
+      if (!made) {
+        // If last free throw was missed, ask about rebound
+        setSecondaryAction({ type: 'free-throw-missed-rebound' });
+        setActionDialog({ open: true, type: 'rebound-question' });
+      } else {
+        toast.success('Falta de tiro registrada', { duration: 1500 });
+        clearSelection();
+        setActionDialog({ open: false, type: null });
+        setFreeThrowPlayer(null);
+      }
+    }
+  };
+
   const handleReboundClick = () => {
     setActionDialog({ open: true, type: 'rebound' });
     setReboundType('defensive');
