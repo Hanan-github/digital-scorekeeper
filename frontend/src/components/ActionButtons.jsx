@@ -221,6 +221,87 @@ export const ActionButtons = () => {
     const sameTeamPlayers = selectedPlayer.team === 'home' ? homeTeam.players : awayTeam.players;
 
     switch (actionDialog.type) {
+      case 'rebound-question':
+        return (
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>¿Hubo rebote?</DialogTitle>
+                <DialogDescription>
+                  ¿Algún jugador capturó el rebote tras el tiro fallado?
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex gap-3 justify-end">
+                <Button variant="outline" onClick={() => handleReboundQuestion(false)}>
+                  No
+                </Button>
+                <Button onClick={() => handleReboundQuestion(true)}>
+                  Sí
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        );
+
+      case 'rebound-type':
+        return (
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Tipo de rebote</DialogTitle>
+                <DialogDescription>
+                  ¿Fue rebote ofensivo o defensivo?
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex gap-3 justify-end">
+                <Button variant="outline" onClick={() => handleReboundType('defensive')}>
+                  Defensivo
+                </Button>
+                <Button onClick={() => handleReboundType('offensive')}>
+                  Ofensivo
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        );
+
+      case 'rebound-player':
+        const reboundTeam = reboundType === 'offensive' ? selectedPlayer.team : getOpponentTeam();
+        const reboundTeamData = reboundTeam === 'home' ? homeTeam : awayTeam;
+        const reboundPlayers = reboundTeamData.players;
+        
+        return (
+          <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Jugador que capturó el rebote</DialogTitle>
+                <DialogDescription>
+                  Selecciona el jugador de {reboundTeamData.name} que capturó el rebote
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-2 max-h-[300px] overflow-y-auto">
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => handleReboundPlayer(null, null)}
+                >
+                  Rebote de Equipo
+                </Button>
+                {reboundPlayers.map((player, index) => (
+                  <Button
+                    key={index}
+                    variant="outline"
+                    className="w-full justify-start"
+                    onClick={() => handleReboundPlayer(reboundTeam, index)}
+                  >
+                    #{player.number} {player.name}
+                  </Button>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
+        );
+
       case 'assist-question':
         return (
           <Dialog open={true} onOpenChange={(open) => !open && setActionDialog({ open: false, type: null })}>
