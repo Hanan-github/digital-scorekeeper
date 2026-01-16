@@ -207,6 +207,17 @@ export const PlayerSelector = () => {
               {subTeam && getBenchPlayers(subTeam).map((player) => {
                 const teamData = subTeam === 'home' ? homeTeam : awayTeam;
                 const stats = (subTeam === 'home' ? homePlayerStats : awayPlayerStats)[player.originalIndex];
+                const val = (
+                  stats.points +
+                  stats.rebounds +
+                  stats.assists +
+                  stats.steals +
+                  stats.blocks -
+                  (stats.fg2Attempted - stats.fg2Made) -
+                  (stats.fg3Attempted - stats.fg3Made) -
+                  (stats.ftAttempted - stats.ftMade) -
+                  stats.turnovers
+                );
                 
                 return (
                   <Button
@@ -215,7 +226,7 @@ export const PlayerSelector = () => {
                     className="w-full justify-start h-auto py-3"
                     onClick={() => handleSubstitution(player.originalIndex)}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 w-full">
                       <div 
                         className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm"
                         style={{
@@ -225,10 +236,23 @@ export const PlayerSelector = () => {
                       >
                         #{player.number}
                       </div>
-                      <div className="text-left">
+                      <div className="text-left flex-1">
                         <div className="font-semibold">{player.name}</div>
-                        <div className="text-xs text-muted-foreground">
-                          {stats.points} PTS | {stats.foulsCommitted} FC
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground flex-wrap">
+                          <span>{stats.points} PTS</span>
+                          <span>•</span>
+                          <span>{stats.rebounds} REB</span>
+                          <span>•</span>
+                          <span>{stats.assists} ASIS</span>
+                          <span>•</span>
+                          <span>{val} VAL</span>
+                          <span>•</span>
+                          <span 
+                            className="inline-flex items-center justify-center w-5 h-5 rounded text-white font-bold"
+                            style={{ backgroundColor: '#ef4444', fontSize: '10px' }}
+                          >
+                            {stats.foulsCommitted}
+                          </span>
                         </div>
                       </div>
                     </div>
