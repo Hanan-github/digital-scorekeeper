@@ -547,12 +547,12 @@ export const ActionButtons = () => {
                 No hubo robo
               </Button>
               <div className="space-y-2 max-h-[200px] overflow-y-auto">
-                {opponentPlayers.map((player, index) => (
+                {activeOpponentPlayers.map((player) => (
                   <Button
-                    key={index}
+                    key={player.originalIndex}
                     variant="outline"
                     className="w-full justify-start"
-                    onClick={() => handleTurnoverSteal(true, index)}
+                    onClick={() => handleTurnoverSteal(true, player.originalIndex)}
                   >
                     #{player.number} {player.name}
                   </Button>
